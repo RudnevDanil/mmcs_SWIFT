@@ -145,14 +145,17 @@ public class ChessGame: ChessProtocol
     
     func isStepAppopriate(from: String, to: String) -> Bool
     {
+        
         // is anything here
         if !isAnyFigureInCell(cell: from)
             {return false}
         
         // from and to don't have the same color
+        
         let thisFig = getFigureFromCell(cell: from)
+        
         let isToEmpty = !isAnyFigureInCell(cell: to)
-        let toFig: Figure? = getFigureFromCell(cell: to)
+        let toFig: Figure? = isToEmpty ? nil : getFigureFromCell(cell: to)
         if  !isToEmpty && toFig!.color  == thisFig.color
             {return false}
         
@@ -161,11 +164,11 @@ public class ChessGame: ChessProtocol
         
         if thisFig.curentType == FigureType.pawn
         {
-            if !(thisFig.color == FigureColors.white && (fi - 1 == ti || fi - 2 == ti && fi == 6))
+            if thisFig.color == FigureColors.white && !(fi - 1 == ti || fi - 2 == ti && fi == 6)
             {return false}
-            if !(thisFig.color == FigureColors.black && (fi + 1 == ti || fi + 2 == ti && ti == 1))
+            if thisFig.color == FigureColors.black && !(fi + 1 == ti || fi + 2 == ti && ti == 1)
             {return false}
-            if !(fj - 1 == tj || fj + 1 == tj || (fj + 1 == tj && isToEmpty))
+            if !(fj - 1 == tj || fj + 1 == tj || ((fj == tj) && isToEmpty))
             {return false}
         }
         else if thisFig.curentType == FigureType.rook || thisFig.curentType == FigureType.queen
@@ -283,18 +286,15 @@ public class ChessGame: ChessProtocol
         {
             let thisFig = getFigureFromCell(cell: from)
             let isToEmpty = !isAnyFigureInCell(cell: to)
-            let toFig: Figure? = getFigureFromCell(cell: to)
-            
+            let toFig: Figure? = isToEmpty ? nil : getFigureFromCell(cell: to)
             if  !isToEmpty && toFig!.curentType == FigureType.king
             {
                 print(" --- Error --- Nobody can't kill king")
             }
-            
             if  !isToEmpty && toFig!.color  != thisFig.color
             {
                 print(" \(toFig!.color) \(toFig!.curentType.rawValue) was killed")
             }
-            
             let (fi, fj) = ChessNotation(str: from)
             let (ti, tj) = ChessNotation(str: to)
             field[ti][tj] = field[fi][fj]
@@ -403,8 +403,8 @@ game.printField()
 print("white are win \(game.checkWin(isWhite: true))    black are win \(game.checkWin(isWhite: false))")
 
 game.step(from: "d8", to: "h4")
-game.printField()
-print("white are win \(game.checkWin(isWhite: true))    black are win \(game.checkWin(isWhite: false))")
+//game.printField()
+//print("white are win \(game.checkWin(isWhite: true))    black are win \(game.checkWin(isWhite: false))")
 
 
 
