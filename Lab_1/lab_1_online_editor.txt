@@ -1,0 +1,357 @@
+//import UIKit
+
+//var str = "Hello, playground"
+
+//print(str)
+
+public enum FigureType: String
+{
+    case queen = "Q"
+    case pawn = "p"
+}
+
+public enum FigureColors
+{
+    case white
+    case black
+}
+
+public class Figure
+{
+    var curentType: FigureType
+    var color: FigureColors
+    
+    init(type: FigureType, clr: FigureColors)
+    {
+        curentType = type
+        color = clr
+    }
+}
+
+func ChessNotation(str: String) -> (x: Int, y:Int)
+{
+    if(  str.count != 2
+    || !(str[str.startIndex] >= "a" && str[str.startIndex] <= "h")
+    || !(str[str.index(after: str.startIndex)] >= "1" && str[str.index(after: str.startIndex)] <= "8") )
+    {
+        print(" --- Error! wrong chess notation! str = \(str)")
+    }
+    
+    let ch = String(str[str.startIndex]);
+    let x = ch=="a" ?0:(ch=="b" ?1:(ch=="c" ?2:(ch=="d" ?3:(ch=="e" ?4:(ch=="f" ?5:(ch=="g" ?6:7))))))
+    let y = 8 - Int(String(str[str.index(after: str.startIndex)] ))!
+    return (y, x)
+}
+
+protocol checkersProtocol
+{
+    func initGame() -> Void
+    func isAnyFigureInCell(cell: String) -> Bool
+    func getFigureFromCell(cell: String) -> Figure
+    func setFigureInSell(cell: String, figure: Figure) -> Void
+    func isStepAppopriate(from: String, to: String) -> Bool
+    func step(from: String, to: String) -> Void
+    func checkWin(isWinOfWhite: Bool) -> Bool
+}
+
+public class СheckersGame: checkersProtocol
+{
+    var field = Array(repeating: Array<Figure?>(repeating: nil, count: 8), count: 8)
+    let alphabet = ["a", "b", "c", "d", "e", "f", "g", "h"]
+    
+    func initGame() -> Void
+    {
+        var clr = FigureColors.white
+        setFigureInSell(cell: "a1", figure: Figure(type: FigureType.pawn, clr: clr))
+        setFigureInSell(cell: "a3", figure: Figure(type: FigureType.pawn, clr: clr))
+        setFigureInSell(cell: "b2", figure: Figure(type: FigureType.pawn, clr: clr))
+        setFigureInSell(cell: "c1", figure: Figure(type: FigureType.pawn, clr: clr))
+        setFigureInSell(cell: "c3", figure: Figure(type: FigureType.pawn, clr: clr))
+        setFigureInSell(cell: "d2", figure: Figure(type: FigureType.pawn, clr: clr))
+        setFigureInSell(cell: "e1", figure: Figure(type: FigureType.pawn, clr: clr))
+        setFigureInSell(cell: "e3", figure: Figure(type: FigureType.pawn, clr: clr))
+        setFigureInSell(cell: "f2", figure: Figure(type: FigureType.pawn, clr: clr))
+        setFigureInSell(cell: "g1", figure: Figure(type: FigureType.pawn, clr: clr))
+        setFigureInSell(cell: "g3", figure: Figure(type: FigureType.pawn, clr: clr))
+        setFigureInSell(cell: "h2", figure: Figure(type: FigureType.pawn, clr: clr)) 
+
+        clr = FigureColors.black
+        setFigureInSell(cell: "a7", figure: Figure(type: FigureType.pawn, clr: clr))
+        setFigureInSell(cell: "b6", figure: Figure(type: FigureType.pawn, clr: clr))
+        setFigureInSell(cell: "b8", figure: Figure(type: FigureType.pawn, clr: clr))
+        setFigureInSell(cell: "c7", figure: Figure(type: FigureType.pawn, clr: clr))
+        setFigureInSell(cell: "d6", figure: Figure(type: FigureType.pawn, clr: clr))
+        setFigureInSell(cell: "d8", figure: Figure(type: FigureType.pawn, clr: clr))
+        setFigureInSell(cell: "e7", figure: Figure(type: FigureType.pawn, clr: clr))
+        setFigureInSell(cell: "f6", figure: Figure(type: FigureType.pawn, clr: clr))
+        setFigureInSell(cell: "f8", figure: Figure(type: FigureType.pawn, clr: clr))
+        setFigureInSell(cell: "g7", figure: Figure(type: FigureType.pawn, clr: clr))
+        setFigureInSell(cell: "h6", figure: Figure(type: FigureType.pawn, clr: clr))
+        setFigureInSell(cell: "h8", figure: Figure(type: FigureType.pawn, clr: clr))
+    }
+    
+    func printField() -> Void
+    {
+        
+        print("   ", terminator: "")
+        for i in 0...7
+            {print("| \(alphabet[i]) ", terminator: "")}
+        print("|")
+        
+        print("---", terminator: "")
+        for _ in 0...7
+            {print("|---", terminator: "")}
+        print("|---")
+        
+        for i in 0...7
+        {
+            print(" \(8 - i) ", terminator: "")
+            for cell in field[i]
+            {
+                if cell == nil
+                {print("|   ", terminator: "")}
+                else
+                {
+                    let fig = cell!
+                    let isBlack = fig.color == FigureColors.black ? "-" : " "
+                    print("|\(isBlack)\(fig.curentType.rawValue)\(isBlack)", terminator: "")
+                }
+            }
+            print("| \(8 - i) ")
+            print("---", terminator: "")
+            for _ in 0...7
+            {print("|---", terminator: "")}
+            print("|---")
+        }
+
+        print("   ", terminator: "")
+        for i in 0...7
+        {print("| \(alphabet[i]) ", terminator: "")}
+        print("|")
+    }
+    
+    func isAnyFigureInCell(cell: String) -> Bool
+    {
+        let (i, j) = ChessNotation(str: cell)
+        return field[i][j] != nil
+    }
+    
+    func getFigureFromCell(cell: String) -> Figure
+    {
+        let (i, j) = ChessNotation(str: cell)
+        return field[i][j]!
+    }
+    
+    func setFigureInSell(cell: String, figure: Figure) -> Void
+    {
+        let (i, j) = ChessNotation(str: cell)
+        field[i][j] = figure
+    }
+    
+    func isStepAppopriate(from: String, to: String) -> Bool
+    {
+        if !isAnyFigureInCell(cell: from)
+        {
+            print(" --- Error --- isStepAppopriate error code = 1")
+            return false
+        }
+
+        let thisFig = getFigureFromCell(cell: from)
+
+        if isAnyFigureInCell(cell: to)
+        {
+            print(" --- Error --- isStepAppopriate error code = 2")
+            return false
+        }
+        
+        let (fi, fj) = ChessNotation(str: from)
+        let (ti, tj) = ChessNotation(str: to)
+
+        let absI = abs(fi - ti)
+        let absJ = abs(fj - tj)
+        
+        if absI != absJ
+        {
+            print(" --- Error --- isStepAppopriate error code = 3")
+            return false
+        }
+
+        if absI == 0
+        {
+            print(" --- Error --- isStepAppopriate error code = 4")
+            return false
+        }
+
+        if thisFig.curentType == FigureType.pawn && absI > 2
+        {
+            print(" --- Error --- isStepAppopriate error code = 5")
+            return false
+        }
+        
+        if absI >= 2
+        {
+            var bi = fi + (ti > fi ? 1 : -1)
+            var bj = fj + (tj > fj ? 1 : -1)
+
+            while (bi != ti && bj != tj)
+            {   
+                if bi < 0 || bi >= 8 || bj < 0 || bj >= 8
+                {
+                    print(" --- Error --- in isStepAppopriate while check between")
+                    print(" --- Error --- isStepAppopriate error code = 6")
+                    return false
+                }
+
+                let isBetwEmpty = field[bi][bj] == nil
+                if !isBetwEmpty
+                {
+                    let toFig = field[bi][bj]!
+                    if toFig.color == thisFig.color
+                    {
+                        print(" --- Error --- isStepAppopriate error code = 7")
+                        return false
+                    }
+                }
+
+                bi = bi + (ti > fi ? 1 : -1)
+                bj = bj + (tj > fj ? 1 : -1)
+            }
+        }        
+        
+        return true;
+    }
+    
+    func step(from: String, to: String) -> Void
+    {
+        if isStepAppopriate(from: from, to: to)
+        {
+            let (fi, fj) = ChessNotation(str: from)
+            let (ti, tj) = ChessNotation(str: to)
+
+            if abs(fi - ti) >= 2
+            {
+                var bi = fi + (ti > fi ? 1 : -1)
+                var bj = fj + (tj > fj ? 1 : -1)
+
+                while (bi != ti && bj != tj)
+                {   
+                    if bi < 0 || bi >= 8 || bj < 0 || bj >= 8
+                    {
+                        print(" --- Error --- in step while killing between")
+                    }
+                    let isBetwEmpty = field[bi][bj] == nil
+                    if (!isBetwEmpty)
+                    {
+                        field[bi][bj] = nil
+                    }
+                    bi = bi + (ti > fi ? 1 : -1)
+                    bj = bj + (tj > fj ? 1 : -1)
+                }
+            }
+
+            let thisFig = getFigureFromCell(cell: from)
+            if thisFig.color == FigureColors.white && ti == 0 || thisFig.color == FigureColors.black && ti == 7
+            {    
+                thisFig.curentType = FigureType.queen
+            }
+
+            field[ti][tj] = field[fi][fj]
+            field[fi][fj] = nil
+        }
+        else
+        {
+            print(" --- Error --- unappopriate step from \(from) to \(to)")
+        }
+    }
+    
+    func checkWin(isWinOfWhite: Bool) -> Bool
+    {
+        let curentColor = isWinOfWhite ? FigureColors.white : FigureColors.black
+        for row in field
+        {
+            for cell in row
+            {
+                if cell != nil && cell!.color != curentColor
+                {
+                    return false
+                }
+            }
+        }
+        return true
+    }
+
+    func showStep(from: String, to: String) -> Void
+    {
+        print(" Moving from \(from) to \(to)")
+        game.step(from: from, to: to)
+        game.printField()
+        print("white are win \(game.checkWin(isWinOfWhite: true))    black are win \(game.checkWin(isWinOfWhite: false))\n")
+    }    
+}
+
+var game = СheckersGame()
+
+game.initGame()
+game.printField(); print("")
+game.showStep(from: "c3", to: "d4")
+
+game.showStep(from: "d6", to: "e5")
+game.showStep(from: "g3", to: "f4")
+game.showStep(from: "e5", to: "c3")
+
+game.showStep(from: "e3", to: "d4")
+game.showStep(from: "c3", to: "d4")
+game.showStep(from: "c3", to: "e5")
+game.showStep(from: "a3", to: "b4")
+game.showStep(from: "b6", to: "a5")
+game.showStep(from: "f2", to: "g3")
+game.showStep(from: "h6", to: "g5")
+
+game.showStep(from: "f4", to: "d6")
+game.showStep(from: "e7", to: "c5")
+game.showStep(from: "b4", to: "d6")
+game.showStep(from: "a5", to: "b4")
+
+game.showStep(from: "g3", to: "f4")
+game.showStep(from: "g5", to: "e3")
+game.showStep(from: "d2", to: "f4")
+
+game.showStep(from: "c7", to: "e5")
+game.showStep(from: "e5", to: "g3")
+game.showStep(from: "h2", to: "f4")
+game.showStep(from: "b4", to: "c3")
+game.showStep(from: "b2", to: "d4")
+
+game.showStep(from: "a1", to: "b2")
+game.showStep(from: "b8", to: "c7")
+game.showStep(from: "b2", to: "a3")
+game.showStep(from: "c7", to: "b6")
+game.showStep(from: "a3", to: "b4")
+game.showStep(from: "b6", to: "c5")
+game.showStep(from: "b4", to: "a5")
+game.showStep(from: "c5", to: "b4")
+game.showStep(from: "a5", to: "b6")
+game.showStep(from: "b4", to: "c3")
+
+game.showStep(from: "c1", to: "d2")
+game.showStep(from: "c3", to: "b2")
+game.showStep(from: "e1", to: "d2")
+game.showStep(from: "d8", to: "c7")
+game.showStep(from: "f8", to: "e7")
+game.showStep(from: "b2", to: "a1")
+game.showStep(from: "a1", to: "e5")
+game.showStep(from: "e5", to: "g3")
+game.showStep(from: "b6", to: "d8")
+game.showStep(from: "f6", to: "e5")
+game.showStep(from: "d8", to: "f6")
+game.showStep(from: "f6", to: "d4")
+game.showStep(from: "g7", to: "f6")
+game.showStep(from: "d4", to: "g7")
+game.showStep(from: "h8", to: "f6")
+game.showStep(from: "e1", to: "f2")
+game.showStep(from: "g3", to: "e1")
+game.showStep(from: "e1", to: "c3")
+game.showStep(from: "g1", to: "h2")
+game.showStep(from: "c3", to: "e5")
+game.showStep(from: "h2", to: "g3")
+game.showStep(from: "e5", to: "h2")
