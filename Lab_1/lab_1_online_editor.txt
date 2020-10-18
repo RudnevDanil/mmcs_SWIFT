@@ -1,9 +1,5 @@
 //import UIKit
 
-//var str = "Hello, playground"
-
-//print(str)
-
 public enum FigureType: String
 {
     case queen = "Q"
@@ -285,7 +281,11 @@ public class СheckersGame: checkersProtocol
         print(" Moving from \(from) to \(to)")
         game.step(from: from, to: to)
         game.printField()
-        print("white are win \(game.checkWin(isWinOfWhite: true))    black are win \(game.checkWin(isWinOfWhite: false))\n")
+        let isWhiteWin = game.checkWin(isWinOfWhite: true)
+        let isBlackWin = game.checkWin(isWinOfWhite: false)        
+        print("white are win \(isWhiteWin)    black are win \(isBlackWin)\n")
+        if isWhiteWin {print("GAME OVER WHITE WIN")}
+        if isBlackWin {print("GAME OVER BLACK WIN")}        
     }    
 }
 
@@ -293,12 +293,11 @@ var game = СheckersGame()
 
 game.initGame()
 game.printField(); print("")
-game.showStep(from: "c3", to: "d4")
 
+game.showStep(from: "c3", to: "d4")
 game.showStep(from: "d6", to: "e5")
 game.showStep(from: "g3", to: "f4")
 game.showStep(from: "e5", to: "c3")
-
 game.showStep(from: "e3", to: "d4")
 game.showStep(from: "c3", to: "d4")
 game.showStep(from: "c3", to: "e5")
@@ -306,22 +305,18 @@ game.showStep(from: "a3", to: "b4")
 game.showStep(from: "b6", to: "a5")
 game.showStep(from: "f2", to: "g3")
 game.showStep(from: "h6", to: "g5")
-
 game.showStep(from: "f4", to: "d6")
 game.showStep(from: "e7", to: "c5")
 game.showStep(from: "b4", to: "d6")
 game.showStep(from: "a5", to: "b4")
-
 game.showStep(from: "g3", to: "f4")
 game.showStep(from: "g5", to: "e3")
 game.showStep(from: "d2", to: "f4")
-
 game.showStep(from: "c7", to: "e5")
 game.showStep(from: "e5", to: "g3")
 game.showStep(from: "h2", to: "f4")
 game.showStep(from: "b4", to: "c3")
 game.showStep(from: "b2", to: "d4")
-
 game.showStep(from: "a1", to: "b2")
 game.showStep(from: "b8", to: "c7")
 game.showStep(from: "b2", to: "a3")
@@ -332,7 +327,6 @@ game.showStep(from: "b4", to: "a5")
 game.showStep(from: "c5", to: "b4")
 game.showStep(from: "a5", to: "b6")
 game.showStep(from: "b4", to: "c3")
-
 game.showStep(from: "c1", to: "d2")
 game.showStep(from: "c3", to: "b2")
 game.showStep(from: "e1", to: "d2")
