@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // UINavigationController - отображает название текущего контролера
         // и позволяет пользователю переходить назад, по стеку контролеров
         //let navigation = UINavigationController(rootViewController: CalculatorController())
-        let navigation = UINavigationController(rootViewController: ViewController())
+        let _ = UINavigationController(rootViewController: ViewController())
         //navigation.view.backgroundColor = UIColor.white
         
         // Устанавливаем контроллер для отображения на экране

@@ -81,11 +81,11 @@
                                                             <action selector="buttonTouched:" destination="BYZ-38-t0r" eventType="touchDown" id="gaB-7i-HN5"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="center" placeholderIntrinsicWidth="70" placeholderIntrinsicHeight="70" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zs8-P6-AxM" customClass="RoundButton" customModule="Calculator" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="center" placeholderIntrinsicWidth="70" placeholderIntrinsicHeight="70" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zs8-P6-AxM" userLabel="÷" customClass="RoundButton" customModule="Calculator" customModuleProvider="target">
                                                         <rect key="frame" x="267.66666666666663" y="0.0" width="70" height="70"/>
                                                         <color key="backgroundColor" red="0.97210128856062172" green="0.73564812127658741" blue="0.18787019632131238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                                        <state key="normal" title="/">
+                                                        <state key="normal" title="÷">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
@@ -452,7 +452,7 @@
                         <viewLayoutGuide key="safeArea" id="0ti-Jo-HHu"/>
                     </view>
                     <connections>
-                        <outlet property="outLabel" destination="Zrs-8H-1TD" id="v7t-eC-qbQ"/>
+                        <outlet property="outputLabel" destination="Zrs-8H-1TD" id="c3P-sp-Ddv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

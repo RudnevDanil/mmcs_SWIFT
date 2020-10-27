@@ -30,7 +30,7 @@ public class CalculatorClass: Calculator
     
     public var input: Double?
     
-    public func addDigit(_ d: Int)
+    public func addDigit(_ d: Int) -> Bool
     {
         if hasPoint
         {
@@ -44,6 +44,10 @@ public class CalculatorClass: Calculator
                 input = (input ?? 0) +  Double(d) / mult
                 fractionDigits += 1
             }
+            else
+            {
+                return false
+            }
         }
         else
         {
@@ -51,7 +55,7 @@ public class CalculatorClass: Calculator
             {
                 if d == 0
                 {
-                    return
+                    return false
                 }
                 input = 0
             }
@@ -59,7 +63,12 @@ public class CalculatorClass: Calculator
             {
                 input = input! * 10 + Double(d)
             }
+            else
+            {
+                return false
+            }
         }
+        return true
     }
     
     public func addPoint()
@@ -121,13 +130,9 @@ public class CalculatorClass: Calculator
         hasPoint = false
     }
     
-    public func compute()
+    public func compute() -> Bool
     {
-        /*
-         case "%":
-         case "±":
-        */
-        
+        var isDivNull = false
         if operation == nil || result == nil || input == nil
         {
             reset()
@@ -144,7 +149,14 @@ public class CalculatorClass: Calculator
             case Operation.mul:
                 result! *= input!
             case Operation.div:
-                result! /= input!
+                if input! == 0
+                {
+                    isDivNull = true
+                }
+                else
+                {
+                    result! /= input!
+                }
             default:
                 print("Unknown operation \(operation!)")
             }
@@ -153,7 +165,11 @@ public class CalculatorClass: Calculator
             fractionDigits = 0
             hasPoint = false
         }
-        
+        if isDivNull
+        {
+            return false
+        }
+        return true
     }
     
     public func clear()

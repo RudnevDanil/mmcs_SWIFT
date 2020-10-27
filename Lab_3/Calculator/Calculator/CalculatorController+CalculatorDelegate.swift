@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension CalculatorController: CalculatorDelegate {
+extension ViewController: CalculatorDelegate {
     
     func calculatorDidUpdateValue(_ calculator: Calculator, with value: Double, valuePrecision fractionDigits: UInt)
     {
