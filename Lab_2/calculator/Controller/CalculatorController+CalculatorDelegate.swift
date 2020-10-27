@@ -10,18 +10,33 @@ import UIKit
 
 extension CalculatorController: CalculatorDelegate {
     
-    func calculatorDidUpdateValue(_ calculator: Calculator, with value: Double, valuePrecision fractionDigits: UInt) {
+    func calculatorDidUpdateValue(_ calculator: Calculator, with value: Double, valuePrecision fractionDigits: UInt)
+    {
+        
+        // counting real fraction digits and use valuePrecision as max
+        var temp = String(format: "%.\(calculator.maxFractDigits)f", value) // calculator maxLen
+        // delete last zero or point
+        // need to analyze maximum calculator.maxFractDigits + 1 elements
+        var tempLast = temp.last!
+        var counter = 0
+        while (counter < calculator.maxFractDigits + 1) && (tempLast == "." || tempLast == "0")
+        {
+            temp.remove(at: temp.index(before: temp.endIndex))
+            tempLast = temp.last!
+            counter += 1
+        }
         
         print("Update Result with \(value), \(fractionDigits)")
         
-        formatter.minimumFractionDigits = min(Int(fractionDigits), maximumFractionDigits)
+        outputLabel.text = temp
+        /*formatter.minimumFractionDigits = min(Int(fractionDigits), maximumFractionDigits)
         
         if calculator.hasPoint, fractionDigits == 0 {
             // поставили запятую, но не ввели цифры после запятой
             outputLabel.text = formatter.string(from: NSNumber(value: value))! + formatter.decimalSeparator
         } else {
             outputLabel.text = formatter.string(from: NSNumber(value: value))
-        }
+        }*/
     }
     
     func calculatorDidClear(_ calculator: Calculator, withDefaultValue value: Double?, defaultPrecision fractionDigits: UInt?) {

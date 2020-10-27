@@ -105,10 +105,12 @@ class CalculatorController: UIViewController {
         case "0"..."9":
             outputLabel.text? += content
             calculator?.addDigit(Int(content)!)
+            calculatorDidUpdateValue(calculator!, with: calculator?.input ?? 0, valuePrecision: calculator?.fractionDigits ?? 0)
         
         case formatter.decimalSeparator:
             outputLabel.text? += "."
             calculator?.addPoint()
+            calculatorDidUpdateValue(calculator!, with: calculator?.input ?? 0, valuePrecision: calculator?.fractionDigits ?? 0)
         
         case "C":
             outputLabel.text? = ""
@@ -117,13 +119,16 @@ class CalculatorController: UIViewController {
             } else {
                 calculator?.reset();
             }
-        
-        case "%", "±", "+", "-", "×", "÷":
+            calculatorDidUpdateValue(calculator!, with: calculator?.input ?? 0, valuePrecision: calculator?.fractionDigits ?? 0)
+        case "±", "%":
+            calculator?.unarOperation(Operation(rawValue:content)!)
+            calculatorDidUpdateValue(calculator!, with: calculator?.input ?? (calculator?.result ?? 0), valuePrecision: calculator?.fractionDigits ?? 0)
+        case "+", "-", "×", "÷":
             calculator?.addOperation(Operation(rawValue:content)!)
-            
+            calculatorDidUpdateValue(calculator!, with: calculator?.result ?? 0, valuePrecision: calculator?.fractionDigits ?? 0)
         case "=":
             calculator?.compute()
-            
+            calculatorDidUpdateValue(calculator!, with: calculator?.result ?? 0, valuePrecision: calculator?.fractionDigits ?? 0)
         default:
             print("Unknown button")
         }
