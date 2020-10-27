@@ -12,10 +12,30 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    //var window: UIWindow? = UIWindow(frame: UIScreen.main.bounds)
+    var calculator: Calculator?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        // UINavigationController - отображает название текущего контролера
+        // и позволяет пользователю переходить назад, по стеку контролеров
+        //let navigation = UINavigationController(rootViewController: CalculatorController())
+        let navigation = UINavigationController(rootViewController: ViewController())
+        //navigation.view.backgroundColor = UIColor.white
+        
+        // Устанавливаем контроллер для отображения на экране
+        //window?.rootViewController = navigation
+        
+        // Инициализируем обработку ввода пользоыателя
+        //window?.makeKeyAndVisible()
+        
+        /////////////////////
+        //
+        //calculator = nil   // инстанцируйте свою модель калькулятора здесь!
+        calculator = CalculatorClass(inputLength: 5, maxFraction: 2)
+        //
+        /////////////////////
+        
         return true
     }
 
