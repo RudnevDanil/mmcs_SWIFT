@@ -16,7 +16,6 @@
 		842C1F97254820D200C4E5A9 /* CalculatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C1F92254820D100C4E5A9 /* CalculatorDelegate.swift */; };
 		842C1F98254820D200C4E5A9 /* CalculatorController+CalculatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C1F93254820D100C4E5A9 /* CalculatorController+CalculatorDelegate.swift */; };
 		842C1F99254820D200C4E5A9 /* CalculatorClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C1F94254820D100C4E5A9 /* CalculatorClass.swift */; };
-		842C1F9A254820D200C4E5A9 /* CalculatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C1F95254820D200C4E5A9 /* CalculatorController.swift */; };
 		842C1F9B254820D200C4E5A9 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842C1F96254820D200C4E5A9 /* Calculator.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,7 +31,6 @@
 		842C1F92254820D100C4E5A9 /* CalculatorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorDelegate.swift; sourceTree = "<group>"; };
 		842C1F93254820D100C4E5A9 /* CalculatorController+CalculatorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CalculatorController+CalculatorDelegate.swift"; sourceTree = "<group>"; };
 		842C1F94254820D100C4E5A9 /* CalculatorClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorClass.swift; sourceTree = "<group>"; };
-		842C1F95254820D200C4E5A9 /* CalculatorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorController.swift; sourceTree = "<group>"; };
 		842C1F96254820D200C4E5A9 /* Calculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,7 +66,6 @@
 			children = (
 				842C1F96254820D200C4E5A9 /* Calculator.swift */,
 				842C1F94254820D100C4E5A9 /* CalculatorClass.swift */,
-				842C1F95254820D200C4E5A9 /* CalculatorController.swift */,
 				842C1F93254820D100C4E5A9 /* CalculatorController+CalculatorDelegate.swift */,
 				842C1F92254820D100C4E5A9 /* CalculatorDelegate.swift */,
 				840001F92546C22E00B6B655 /* AppDelegate.swift */,
@@ -155,7 +152,6 @@
 			files = (
 				842C1F97254820D200C4E5A9 /* CalculatorDelegate.swift in Sources */,
 				842C1F98254820D200C4E5A9 /* CalculatorController+CalculatorDelegate.swift in Sources */,
-				842C1F9A254820D200C4E5A9 /* CalculatorController.swift in Sources */,
 				842C1F99254820D200C4E5A9 /* CalculatorClass.swift in Sources */,
 				842C1F9125481BA200C4E5A9 /* RoundButton.swift in Sources */,
 				842C1F9B254820D200C4E5A9 /* Calculator.swift in Sources */,

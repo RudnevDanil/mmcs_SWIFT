@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+    
 class CalculatorController: UIViewController {
 
     let buttonText = [["C", "±", "%", "÷"],
@@ -104,9 +104,15 @@ class CalculatorController: UIViewController {
             
         case "0"..."9":
             outputLabel.text? += content
-            calculator?.addDigit(Int(content)!)
-            calculatorDidUpdateValue(calculator!, with: calculator?.input ?? 0, valuePrecision: calculator?.fractionDigits ?? 0)
-        
+            let res = calculator?.addDigit(Int(content)!)
+            if res != nil && res!
+            {
+                calculatorDidUpdateValue(calculator!, with: calculator?.input ?? 0, valuePrecision: calculator?.fractionDigits ?? 0)
+            }
+            else
+            {
+                calculatorDidInputOverflow(calculator!)
+            }
         case formatter.decimalSeparator:
             outputLabel.text? += "."
             calculator?.addPoint()
@@ -127,8 +133,15 @@ class CalculatorController: UIViewController {
             calculator?.addOperation(Operation(rawValue:content)!)
             calculatorDidUpdateValue(calculator!, with: calculator?.result ?? 0, valuePrecision: calculator?.fractionDigits ?? 0)
         case "=":
-            calculator?.compute()
-            calculatorDidUpdateValue(calculator!, with: calculator?.result ?? 0, valuePrecision: calculator?.fractionDigits ?? 0)
+            let res = calculator?.compute()
+            if res != nil && res!
+            {
+                calculatorDidUpdateValue(calculator!, with: calculator?.result ?? 0, valuePrecision: calculator?.fractionDigits ?? 0)
+            }
+            else
+            {
+                calculatorDidNotCompute(calculator!, withError: "error")
+            }
         default:
             print("Unknown button")
         }

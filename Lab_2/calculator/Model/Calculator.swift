@@ -43,7 +43,7 @@ public protocol Calculator: class { // можно реализовывать т�
     var input: Double? { get }
     
     /// Добавить цифру к правому значению
-    func addDigit(_ d: Int)
+    func addDigit(_ d: Int) -> Bool
     
     /// Добавить точку к правому значению
     func addPoint()
@@ -67,7 +67,7 @@ public protocol Calculator: class { // можно реализовывать т�
     func addOperation(_ op: Operation)
     
     /// Вычислить значение выражения и записать его в левое значение
-    func compute()
+    func compute() -> Bool
     
     /// Очистить правое значение
     func clear()

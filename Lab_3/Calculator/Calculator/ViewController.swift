@@ -58,6 +58,9 @@ class ViewController: UIViewController {
             }
             else
             {
+                var str = outputLabel.text
+                str?.removeLast()
+                outputLabel.text = str
                 calculatorDidInputOverflow(calculator!)
             }
             
