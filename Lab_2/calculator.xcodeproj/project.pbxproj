@@ -3,11 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		84F3BF2C253F7FFE00701E1E /* CalculatorClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3BF2B253F7FFE00701E1E /* CalculatorClass.swift */; };
+		8405DD75254867680051978C /* CalculatorClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8405DD74254867670051978C /* CalculatorClass.swift */; };
 		8CEE2A99233A040500352C66 /* CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEE2A98233A040500352C66 /* CalculatorTests.swift */; };
 		8CEE2AA2233A052800352C66 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CEE2AA0233A052800352C66 /* LaunchScreen.storyboard */; };
 		8CEE2AA4233A055700352C66 /* logo_mehmat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8CEE2AA3233A055700352C66 /* logo_mehmat.jpg */; };
@@ -31,7 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		84F3BF2B253F7FFE00701E1E /* CalculatorClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorClass.swift; sourceTree = "<group>"; };
+		8405DD74254867670051978C /* CalculatorClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorClass.swift; sourceTree = "<group>"; };
 		8CEE2A96233A040500352C66 /* calculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = calculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CEE2A98233A040500352C66 /* CalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTests.swift; sourceTree = "<group>"; };
 		8CEE2A9A233A040500352C66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -88,7 +88,7 @@
 				E01FFAA21E5C57A000BC48BB /* AppDelegate.swift */,
 				E01FFAA31E5C57A000BC48BB /* CalculatorController.swift */,
 				E0D62A241F7292370064561C /* CalculatorController+CalculatorDelegate.swift */,
-				84F3BF2B253F7FFE00701E1E /* CalculatorClass.swift */,
+				8405DD74254867670051978C /* CalculatorClass.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -192,7 +192,7 @@
 				};
 			};
 			buildConfigurationList = E01FFA821E5C504000BC48BB /* Build configuration list for PBXProject "calculator" */;
-			compatibilityVersion = "Xcode 10.0";
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -246,7 +246,7 @@
 			files = (
 				E01FFAA41E5C57A000BC48BB /* AppDelegate.swift in Sources */,
 				E01FFAA51E5C57A000BC48BB /* CalculatorController.swift in Sources */,
-				84F3BF2C253F7FFE00701E1E /* CalculatorClass.swift in Sources */,
+				8405DD75254867680051978C /* CalculatorClass.swift in Sources */,
 				E0D62A251F7292370064561C /* CalculatorController+CalculatorDelegate.swift in Sources */,
 				E0D62A271F739EB20064561C /* Calculator.swift in Sources */,
 				E0D62A291F73A0940064561C /* CalculatorDelegate.swift in Sources */,
@@ -287,17 +287,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = calculatorTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.sfedu.mmcs.calculatorTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/calculator.app/calculator";
 			};
@@ -315,16 +311,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = calculatorTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.sfedu.mmcs.calculatorTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/calculator.app/calculator";
 			};
@@ -432,8 +424,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -445,10 +436,7 @@
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = calculator/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.sfedu.loshkarev.calculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -463,10 +451,7 @@
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = calculator/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.sfedu.loshkarev.calculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;

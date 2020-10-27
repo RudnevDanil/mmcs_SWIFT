@@ -7,9 +7,9 @@
 //
 
 import UIKit
-    
-class CalculatorController: UIViewController {
 
+class CalculatorController: UIViewController {
+    
     let buttonText = [["C", "±", "%", "÷"],
                       ["7", "8", "9", "×"],
                       ["4", "5", "6", "-"],
@@ -53,11 +53,11 @@ class CalculatorController: UIViewController {
         }
         
         let elementSize = CGSize(width: view.bounds.width / CGFloat(buttonText[0].count),
-                                height: view.bounds.height / CGFloat(buttonText.count + 1))
+                                 height: view.bounds.height / CGFloat(buttonText.count + 1))
         
         // LABEL
         outputLabel = UILabel(frame: CGRect(origin: view.bounds.origin,
-                                      size: CGSize(width: view.bounds.width, height: elementSize.height)))
+                                            size: CGSize(width: view.bounds.width, height: elementSize.height)))
         outputLabel.text = String()
         outputLabel.textAlignment = .right
         outputLabel.font = UIFont(name: "Menlo-Regular", size: 28)
@@ -111,13 +111,16 @@ class CalculatorController: UIViewController {
             }
             else
             {
+                var str = outputLabel.text
+                str?.removeLast()
+                outputLabel.text = str
                 calculatorDidInputOverflow(calculator!)
             }
         case formatter.decimalSeparator:
             outputLabel.text? += "."
             calculator?.addPoint()
             calculatorDidUpdateValue(calculator!, with: calculator?.input ?? 0, valuePrecision: calculator?.fractionDigits ?? 0)
-        
+            
         case "C":
             outputLabel.text? = ""
             if let _ = calculator?.input {

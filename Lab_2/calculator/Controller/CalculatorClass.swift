@@ -93,22 +93,22 @@ public class CalculatorClass: Calculator
     {
         switch op
         {
-            case Operation.perc:
-                if (result != nil && input != nil)
-                {
-                    input = result! / 100 * input!
-                }
-            case Operation.sign:
-                if input != nil
-                {
-                    input! *= -1
-                }
-                else if result != nil
-                {
-                    result! *= -1
-                }
-            default:
-                print("Error unar operation")
+        case Operation.perc:
+            if (result != nil && input != nil)
+            {
+                input = result! / 100 * input!
+            }
+        case Operation.sign:
+            if input != nil
+            {
+                input! *= -1
+            }
+            else if result != nil
+            {
+                result! *= -1
+            }
+        default:
+            print("Error unar operation")
         }
         
     }
@@ -171,7 +171,7 @@ public class CalculatorClass: Calculator
         }
         return true
     }
-
+    
     
     public func clear()
     {

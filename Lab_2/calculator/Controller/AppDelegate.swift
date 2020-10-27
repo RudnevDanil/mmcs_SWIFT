@@ -10,7 +10,7 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow? = UIWindow(frame: UIScreen.main.bounds)
     var calculator: Calculator?
     
@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         /////////////////////
-                           //
+        //
         //calculator = nil   // инстанцируйте свою модель калькулятора здесь!
         calculator = CalculatorClass(inputLength: 5, maxFraction: 2)
         //

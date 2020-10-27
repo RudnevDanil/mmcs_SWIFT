@@ -30,13 +30,13 @@ extension CalculatorController: CalculatorDelegate {
         
         outputLabel.text = temp
         /*formatter.minimumFractionDigits = min(Int(fractionDigits), maximumFractionDigits)
-        
-        if calculator.hasPoint, fractionDigits == 0 {
-            // поставили запятую, но не ввели цифры после запятой
-            outputLabel.text = formatter.string(from: NSNumber(value: value))! + formatter.decimalSeparator
-        } else {
-            outputLabel.text = formatter.string(from: NSNumber(value: value))
-        }*/
+         
+         if calculator.hasPoint, fractionDigits == 0 {
+         // поставили запятую, но не ввели цифры после запятой
+         outputLabel.text = formatter.string(from: NSNumber(value: value))! + formatter.decimalSeparator
+         } else {
+         outputLabel.text = formatter.string(from: NSNumber(value: value))
+         }*/
     }
     
     func calculatorDidClear(_ calculator: Calculator, withDefaultValue value: Double?, defaultPrecision fractionDigits: UInt?) {
@@ -60,8 +60,8 @@ extension CalculatorController: CalculatorDelegate {
         let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         
         let cancel = UIAlertAction(title: "Cancel",style: UIAlertAction.Style.cancel) { action in
-                alert.dismiss(animated: true, completion: nil)
-            }
+            alert.dismiss(animated: true, completion: nil)
+        }
         alert.addAction(cancel)
         
         self.present(alert, animated: true)
