@@ -53,6 +53,9 @@
                                             </label>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="6UU-KA-xhG" userLabel="Red Slider">
                                                 <rect key="frame" x="72.5" y="0.0" width="302.5" height="66.5"/>
+                                                <connections>
+                                                    <action selector="coloralueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="SVG-7h-aED"/>
+                                                </connections>
                                             </slider>
                                         </subviews>
                                         <constraints>
@@ -71,6 +74,9 @@
                                             </label>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="3Yb-tI-dUm" userLabel="Green Slider">
                                                 <rect key="frame" x="72.5" y="0.0" width="302.5" height="66.5"/>
+                                                <connections>
+                                                    <action selector="coloralueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="lnB-eJ-ypL"/>
+                                                </connections>
                                             </slider>
                                         </subviews>
                                         <constraints>
@@ -89,6 +95,9 @@
                                             </label>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="150" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="e6U-pL-Nku" userLabel="Blue Slider">
                                                 <rect key="frame" x="72.5" y="0.0" width="302.5" height="66.5"/>
+                                                <connections>
+                                                    <action selector="coloralueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="h24-Bq-FSO"/>
+                                                </connections>
                                             </slider>
                                         </subviews>
                                         <constraints>
@@ -99,6 +108,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dSd-bj-ivY" userLabel="colorLabel" customClass="RoundButton" customModule="chroma" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="589" width="373" height="65"/>
                                         <color key="backgroundColor" red="0.19607843137254902" green="0.39215686274509803" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <state key="normal" title="#326496">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -138,14 +148,23 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UUe-Sq-NBP" userLabel="load">
                                         <rect key="frame" x="0.0" y="16" width="124.5" height="50"/>
                                         <state key="normal" image="load.png"/>
+                                        <connections>
+                                            <action selector="buttonLoadTouched:" destination="BYZ-38-t0r" eventType="touchDown" id="jXR-31-TAK"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7lh-Tg-K2c" userLabel="eraser">
                                         <rect key="frame" x="124.5" y="16" width="124" height="50"/>
                                         <state key="normal" image="eraser.png"/>
+                                        <connections>
+                                            <action selector="ButtonEraserTouched:" destination="BYZ-38-t0r" eventType="touchDown" id="MFv-nA-eQX"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9KI-4r-6us" userLabel="save">
                                         <rect key="frame" x="248.5" y="16" width="124" height="50"/>
                                         <state key="normal" image="save.png"/>
+                                        <connections>
+                                            <action selector="buttonSaveTouched:" destination="BYZ-38-t0r" eventType="touchDown" id="6mG-H4-Gs8"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -179,6 +198,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="blueColor" destination="e6U-pL-Nku" id="l7n-GE-s5h"/>
+                        <outlet property="colorLabel" destination="dSd-bj-ivY" id="9dk-Os-H91"/>
+                        <outlet property="greenColor" destination="3Yb-tI-dUm" id="aWH-lX-FjR"/>
+                        <outlet property="imageView" destination="u0P-oT-37w" id="Ei4-dN-C7P"/>
+                        <outlet property="redColor" destination="6UU-KA-xhG" id="4QH-sY-TYU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
