@@ -18,8 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M7M-rk-5Dp" userLabel="head and foot">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M7M-rk-5Dp" userLabel="head">
+                                <rect key="frame" x="0.0" y="44" width="414" height="82"/>
                                 <subviews>
                                     <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4EO-Vx-IMt">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -27,28 +27,12 @@
                                             <navigationItem title="Chroma" id="3Mp-Bi-e2Q"/>
                                         </items>
                                     </navigationBar>
-                                    <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1q4-PV-QQt">
-                                        <rect key="frame" x="0.0" y="231" width="0.0" height="83"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <items>
-                                            <tabBarItem title="Load" image="/Users/admin/Desktop/mmcs_SWIFT/Lab_4/chroma/chroma/ico1.png" id="LYe-p7-4Il">
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="/Users/admin/Desktop/mmcs_SWIFT/Lab_4/chroma/chroma/ico1.png"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </tabBarItem>
-                                            <tabBarItem title="Undo" id="gBC-tb-i9Z"/>
-                                            <tabBarItem title="Save" id="QVF-Bz-Iwl"/>
-                                        </items>
-                                    </tabBar>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="1q4-PV-QQt" firstAttribute="bottom" secondItem="M7M-rk-5Dp" secondAttribute="bottom" id="Oji-tq-MzZ"/>
                                     <constraint firstItem="4EO-Vx-IMt" firstAttribute="width" secondItem="M7M-rk-5Dp" secondAttribute="width" id="PPe-FW-jII"/>
-                                    <constraint firstItem="1q4-PV-QQt" firstAttribute="width" secondItem="M7M-rk-5Dp" secondAttribute="width" id="Ysj-9C-crb"/>
                                     <constraint firstItem="4EO-Vx-IMt" firstAttribute="top" secondItem="M7M-rk-5Dp" secondAttribute="top" id="l1M-Sh-UND"/>
                                     <constraint firstItem="4EO-Vx-IMt" firstAttribute="centerX" secondItem="M7M-rk-5Dp" secondAttribute="centerX" id="qQv-f9-qPb"/>
-                                    <constraint firstItem="1q4-PV-QQt" firstAttribute="centerX" secondItem="M7M-rk-5Dp" secondAttribute="centerX" id="wQ8-aZ-k6e"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C8W-MU-UNd" userLabel="image and color choosing">
@@ -113,7 +97,7 @@
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dSd-bj-ivY" userLabel="colorLabel" customClass="RoundButton" customModule="chroma" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="609" width="373" height="65"/>
+                                        <rect key="frame" x="0.0" y="589" width="373" height="65"/>
                                         <color key="backgroundColor" red="0.19607843137254902" green="0.39215686274509803" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="#326496">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -145,20 +129,53 @@
                                     <constraint firstItem="4nk-no-Eb1" firstAttribute="height" secondItem="EG3-a4-htp" secondAttribute="height" id="uwf-r7-K5c"/>
                                     <constraint firstItem="u0P-oT-37w" firstAttribute="width" secondItem="C8W-MU-UNd" secondAttribute="width" id="v2c-9x-4bo"/>
                                     <constraint firstItem="dSd-bj-ivY" firstAttribute="width" secondItem="C8W-MU-UNd" secondAttribute="width" id="vUa-4L-ebJ"/>
-                                    <constraint firstItem="dSd-bj-ivY" firstAttribute="bottom" secondItem="C8W-MU-UNd" secondAttribute="bottom" constant="20" symbolic="YES" id="x4a-EU-u6p"/>
+                                    <constraint firstItem="dSd-bj-ivY" firstAttribute="top" secondItem="4nk-no-Eb1" secondAttribute="bottom" id="x4a-EU-u6p"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="70n-eh-5fi" userLabel="foot">
+                                <rect key="frame" x="20.5" y="780" width="373" height="82"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UUe-Sq-NBP" userLabel="load">
+                                        <rect key="frame" x="0.0" y="16" width="124.5" height="50"/>
+                                        <state key="normal" image="load.png"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7lh-Tg-K2c" userLabel="eraser">
+                                        <rect key="frame" x="124.5" y="16" width="124" height="50"/>
+                                        <state key="normal" image="eraser.png"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9KI-4r-6us" userLabel="save">
+                                        <rect key="frame" x="248.5" y="16" width="124" height="50"/>
+                                        <state key="normal" image="save.png"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="UUe-Sq-NBP" firstAttribute="centerY" secondItem="70n-eh-5fi" secondAttribute="centerY" id="E3G-5V-zq3"/>
+                                    <constraint firstItem="7lh-Tg-K2c" firstAttribute="centerY" secondItem="70n-eh-5fi" secondAttribute="centerY" id="L65-8E-aMe"/>
+                                    <constraint firstItem="7lh-Tg-K2c" firstAttribute="width" secondItem="UUe-Sq-NBP" secondAttribute="width" id="N0X-vl-ajr"/>
+                                    <constraint firstItem="9KI-4r-6us" firstAttribute="leading" secondItem="7lh-Tg-K2c" secondAttribute="trailing" id="PKE-75-4Cw"/>
+                                    <constraint firstItem="UUe-Sq-NBP" firstAttribute="leading" secondItem="70n-eh-5fi" secondAttribute="leading" id="WhY-Cv-EaX"/>
+                                    <constraint firstItem="UUe-Sq-NBP" firstAttribute="width" secondItem="70n-eh-5fi" secondAttribute="width" multiplier="0.333" id="cWV-92-G9Q"/>
+                                    <constraint firstItem="7lh-Tg-K2c" firstAttribute="leading" secondItem="UUe-Sq-NBP" secondAttribute="trailing" id="rEk-fv-w5b"/>
+                                    <constraint firstItem="9KI-4r-6us" firstAttribute="centerY" secondItem="70n-eh-5fi" secondAttribute="centerY" id="w1i-AR-3ao"/>
+                                    <constraint firstItem="9KI-4r-6us" firstAttribute="width" secondItem="UUe-Sq-NBP" secondAttribute="width" id="zIW-bj-KaK"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="C8W-MU-UNd" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="0Td-ph-LM5"/>
+                            <constraint firstItem="C8W-MU-UNd" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="3ue-Io-gCi"/>
                             <constraint firstItem="C8W-MU-UNd" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" multiplier="0.9" id="AnX-yg-b3L"/>
-                            <constraint firstItem="C8W-MU-UNd" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="0.8" id="bsE-1Z-Ln3"/>
-                            <constraint firstItem="M7M-rk-5Dp" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="dJR-bC-g8T"/>
-                            <constraint firstItem="M7M-rk-5Dp" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="dRa-XM-AQ5"/>
-                            <constraint firstItem="M7M-rk-5Dp" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" id="iXu-9P-hMA"/>
+                            <constraint firstItem="M7M-rk-5Dp" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Csn-cT-T2y"/>
+                            <constraint firstItem="C8W-MU-UNd" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="0.8" id="TE0-6N-7jx"/>
+                            <constraint firstItem="70n-eh-5fi" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="0.1" id="Y2n-a4-bOK"/>
+                            <constraint firstItem="70n-eh-5fi" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" multiplier="0.9" id="fxg-jS-jED"/>
+                            <constraint firstItem="M7M-rk-5Dp" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="0.1" id="h9U-A6-0xK"/>
                             <constraint firstItem="M7M-rk-5Dp" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" id="j9j-If-zbA"/>
-                            <constraint firstItem="C8W-MU-UNd" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="jac-r9-upd"/>
+                            <constraint firstItem="70n-eh-5fi" firstAttribute="top" secondItem="C8W-MU-UNd" secondAttribute="bottom" id="jcL-8u-1gb"/>
+                            <constraint firstItem="C8W-MU-UNd" firstAttribute="top" secondItem="M7M-rk-5Dp" secondAttribute="bottom" id="k6y-Yt-6Or"/>
+                            <constraint firstItem="70n-eh-5fi" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="x8S-tW-2tx"/>
+                            <constraint firstItem="M7M-rk-5Dp" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ybo-2r-Iu8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -169,6 +186,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="/Users/admin/Desktop/mmcs_SWIFT/Lab_4/chroma/chroma/ico1.png" width="16" height="16"/>
+        <image name="eraser.png" width="50" height="50"/>
+        <image name="load.png" width="50" height="50"/>
+        <image name="save.png" width="50" height="50"/>
     </resources>
 </document>
