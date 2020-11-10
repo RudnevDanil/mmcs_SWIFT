@@ -38,7 +38,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C8W-MU-UNd" userLabel="image and color choosing">
                                 <rect key="frame" x="20.5" y="126" width="373" height="654"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="u0P-oT-37w" userLabel="imageBox">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eraser.png" translatesAutoresizingMaskIntoConstraints="NO" id="u0P-oT-37w" userLabel="imageBox">
                                         <rect key="frame" x="0.0" y="0.0" width="373" height="392.5"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                     </imageView>

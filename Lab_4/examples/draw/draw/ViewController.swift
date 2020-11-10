@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     var strokeWidth: CGFloat = 12.0
     var strokeColor = UIColor.blue
     
-    var imageView: UIImageView {
+    var imageViewLines: UIImageView {
         return view as! UIImageView
     }
     
@@ -60,14 +60,14 @@ class ViewController: UIViewController {
     }
     
     @objc func longPress() {
-        let activity = UIActivityViewController(activityItems: [imageView.image as Any], applicationActivities: nil)
+        let activity = UIActivityViewController(activityItems: [imageViewLines.image as Any], applicationActivities: nil)
         present(activity, animated:true, completion:nil)
     }
     
     func drawLine(from fromPoint: CGPoint, to toPoint:CGPoint) {
         
         UIGraphicsBeginImageContext(view.frame.size)
-        imageView.image?.draw(in: CGRect(origin: CGPoint.zero, size: view.frame.size))
+        imageViewLines.image?.draw(in: CGRect(origin: CGPoint.zero, size: view.frame.size))
         
         let linePath = UIBezierPath()
         
@@ -80,7 +80,7 @@ class ViewController: UIViewController {
         linePath.lineJoinStyle = .round
         linePath.stroke()
         
-        imageView.image = UIGraphicsGetImageFromCurrentImageContext()
+        imageViewLines.image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
     }
     
