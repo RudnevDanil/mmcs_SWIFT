@@ -152,11 +152,11 @@
                                             <action selector="buttonLoadTouched:" destination="BYZ-38-t0r" eventType="touchDown" id="jXR-31-TAK"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7lh-Tg-K2c" userLabel="eraser">
-                                        <rect key="frame" x="124.5" y="16" width="124" height="50"/>
-                                        <state key="normal" image="eraser.png"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7lh-Tg-K2c" userLabel="undo">
+                                        <rect key="frame" x="124.5" y="15" width="124" height="52"/>
+                                        <state key="normal" image="undo.png"/>
                                         <connections>
-                                            <action selector="ButtonEraserTouched:" destination="BYZ-38-t0r" eventType="touchDown" id="MFv-nA-eQX"/>
+                                            <action selector="buttonUndoTouched:" destination="BYZ-38-t0r" eventType="touchDown" id="tJ1-ft-VaI"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9KI-4r-6us" userLabel="save">
@@ -215,5 +215,6 @@
         <image name="eraser.png" width="50" height="50"/>
         <image name="load.png" width="50" height="50"/>
         <image name="save.png" width="50" height="50"/>
+        <image name="undo.png" width="52" height="52"/>
     </resources>
 </document>

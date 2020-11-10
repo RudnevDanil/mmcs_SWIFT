@@ -10,7 +10,8 @@ import UIKit
 
 class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         //view = imageView!
         //view = UIImageView(frame: view.bounds)
@@ -27,6 +28,15 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     var strokeColor = UIColor.blue
     var linePath: UIBezierPath?
     
+    struct lineInfo
+    {
+        var startPoint: CGPoint
+        var endPoint: CGPoint
+        var color: UIColor
+    }
+    var linesArray: Array<lineInfo> = []
+    
+    
     @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var redColor: UISlider!
@@ -41,6 +51,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBAction func coloralueChanged(_ sender: Any)
     {
         colorLabel.backgroundColor =  UIColor(red: (CGFloat(redColor.value/255.0)), green: (CGFloat(greenColor.value/255.0)), blue: (CGFloat(blueColor.value/255.0)), alpha: 1.0)
+        strokeColor = colorLabel.backgroundColor!
     }
     
     @IBAction func buttonLoadTouched(_ sender: Any)
@@ -82,11 +93,13 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         }
     }
     
-    
-    @IBAction func ButtonEraserTouched(_ sender: Any)
+    @IBAction func buttonUndoTouched(_ sender: Any)
     {
-        
-    }
+        if linesArray.count > 0
+        {
+            _ = linesArray.popLast()
+        }
+    }    
     
     @IBAction func buttonSaveTouched(_ sender: Any)
     {
@@ -124,15 +137,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         present(activity, animated:true, completion:nil)
     }
     
-    func drawLine(from fromPoint: CGPoint, to toPoint:CGPoint) {
+    func drawLine(from fromPoint: CGPoint, to toPoint:CGPoint)
+    {
+        linesArray.append(lineInfo(startPoint: fromPoint, endPoint: toPoint, color: strokeColor))
         
-        //UIGraphicsBeginImageContext(view.frame.size)
-        UIGraphicsBeginImageContext(imageViewLines.frame.size)
-        
-        //imageViewLines.image?.draw(in: CGRect(origin: CGPoint.zero, size: view.frame.size))
-        /*let stPoint = CGPoint(
-            x: (imageViewLines.frame.origin.x - imageViewLines.frame.size.width / 2),
-            y: (imageViewLines.frame.origin.y - imageViewLines.frame.size.height / 2))*/
         let stPoint = CGPoint(
             x: (imageViewLines.frame.origin.x),
             y: (imageViewLines.frame.origin.y))
@@ -140,22 +148,25 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         let imSize = CGSize(
             width: imageViewLines.frame.size.width + imageViewLines.frame.size.width - floor(imageViewLines.frame.size.width),
             height: imageViewLines.frame.size.height + imageViewLines.frame.size.height - floor(imageViewLines.frame.size.height))
-        imageViewLines.image?.draw(in: CGRect(origin: stPoint, size: imSize))
-        //imageViewLines.image?.draw(in: CGRect(origin: stPoint, size: view.frame.size))
         
-        let linePath = UIBezierPath()
-        
-        linePath.move(to: fromPoint)
-        linePath.addLine(to: toPoint)
-        
-        strokeColor.setStroke()
-        linePath.lineWidth = strokeWidth
-        linePath.lineCapStyle = .round
-        linePath.lineJoinStyle = .round
-        linePath.stroke()
-        
-        imageViewLines.image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
+        for curentLine in linesArray
+        {
+            UIGraphicsBeginImageContext(imageViewLines.frame.size)
+            
+            imageViewLines.image?.draw(in: CGRect(origin: stPoint, size: imSize))
+            
+            let linePath = UIBezierPath()
+            linePath.move(to: curentLine.startPoint)
+            linePath.addLine(to: curentLine.endPoint)
+            strokeColor = curentLine.color
+            strokeColor.setStroke()
+            linePath.lineWidth = strokeWidth
+            linePath.lineCapStyle = .round
+            linePath.lineJoinStyle = .round
+            linePath.stroke()
+            imageViewLines.image = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+        }
     }
 }
 
